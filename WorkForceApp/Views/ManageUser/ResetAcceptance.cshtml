@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Reset Acceptance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Content/DirPAgination/dirPagination.js"></script>
+<script src="~/Scripts/JSController/ManageCostCodeCntrl.js"></script>
+
+<div ng-app="myApp" ng-controller="ManageCostCodeController">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="MessageBox" class="table-responsive"></div>
+                @* Reset Password *@
+                <div class="panel panel-default">
+                    <div class="panel-heading"><strong>Reset Acceptance</strong></div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <form role="form" name="LeaveForm" novalidate>
+                                <table id="myTable" class="table table-responsive table-condensed table-hover">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="input-group form">
+                                                    <input type="text" class="form-control" id="eCode" name="eCode" placeholder="Search Employee Code" ng-model="New.EmpUnqId">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-primary" type="submit" id="btnSearch" value="Search" name="Search" ng-click="GetEmp(New)"><i class="icon-search"></i></button>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="right-inner-addon">
+                                                    <i class="icon-calendar"></i>
+                                                    <input class="form-control" type="text" id="Date" ng-model="New.Date" data-date-format="yyyy/MM/dd" datepicker placeholder="Select Date">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-success btn-custom" type="button" id="btnReset" style="text-align:right;" value="Reset" name="Reset" ng-click="ResetAccepetance(New)"><i class="icon-refresh"></i>&nbsp; Reset Cost Code Acceptance</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-bordered" id="tbl_empdtl">
+                                    <tr dir-paginate="d in empdata|itemsPerPage:5">
+                                        <th>EmpUnqId</th>
+                                        <td>{{d.empUnqID}}</td>
+                                        <th>Employee Name</th>
+                                        <td>{{d.empName}}</td>
+                                        <th>Cost Code</th>
+                                        <td>{{d.costCode}}</td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

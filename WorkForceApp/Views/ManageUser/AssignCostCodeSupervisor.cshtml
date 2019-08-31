@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "Employee Acceptance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Content/DirPAgination/dirPagination.js"></script>
+<script src="~/Scripts/JSController/ManageCostCodeCntrl.js"></script>
+
+<style type="text/css">
+    .ng-table-pager {
+        display: none;
+    }
+
+    .TextBoxStyle {
+        height: 25px;
+    }
+
+    .AddNew {
+        float: right;
+        position: relative;
+    }
+
+    .right-inner-addon {
+        position: relative;
+    }
+
+        .right-inner-addon input {
+            padding-right: 30px;
+        }
+
+        .right-inner-addon i {
+            position: absolute;
+            right: 0px;
+            padding: 10px 12px;
+            pointer-events: none;
+        }
+</style>
+
+<div ng-app="myApp" ng-controller="ManageCostCodeController">
+    <div class="container">
+        <div id="MessageBox" class="table-responsive"></div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><strong>Employee Acceptance</strong></div>
+                    <div class="panel-body">
+                        <div ng-init="GetSupvisorPendingTran()" class="table-responsive">
+                            <table class="table table-responsive table-condensed table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align:center;width:50px;">Work Group</th>
+                                        <th style="text-align:center;">Emp Type</th>
+                                        <th style="text-align:center;width:70px;">Emp Code</th>
+                                        <th style="text-align:center;">Name</th>
+                                        <th style="text-align:center;">Station</th>
+                                        <th style="text-align:center;width:100px;">Cost Code</th>
+                                        <th style="text-align:center;">Cost Desc</th>
+                                        <th style="text-align:center;">In Time</th>
+                                        <th style="text-align:center;width:20px;">Cont Code</th>
+                                        <th style="text-align:center;">Status</th>
+                                        <th style="text-align:center;">New Cost Code</th>
+                                        <th style="text-align:center;">Action</th>
+                                    </tr>
+                                    <tr>
+                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.wrkGrp" /></td>
+                                        <td></td>
+                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.empUnqId" /></td>
+                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.empName" /></td>
+                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.statDesc" /></td>
+                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.costCode" /></td>
+                                        <td colspan="2"></td>
+                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.contCode" /></td>
+                                        <td colspan="3"></td>
+                                    </tr>
+                                </thead>
+                                <tbody dir-paginate="d in supdata|orderBy:sortKey:reverse|filter:search|itemsPerPage:10" current-page="currentPage">
+                                    <tr>
+                                        <td style="text-align:center;">{{d.wrkGrp}}</td>
+                                        <td></td>
+                                        <td style="text-align:center;">{{d.empUnqId}}</td>
+                                        <td style="text-align:left;">{{d.empName}}</td>
+                                        <td style="text-align:center;">{{d.statDesc}}</td>
+                                        <td style="text-align:center;">{{d.costCode}}</td>
+                                        <td style="text-align:center;">{{d.costDesc}}</td>
+                                        <td style="text-align:center;">{{d.timeIn | date:'yyyy-MM-dd hh:mm:ss'}}</td>
+                                        <td style="text-align:center;">{{d.contCode}}</td>
+                                        <td>
+                                            <select id="cmbStatus" class="form-control" ng-model="N.Status">
+                                                <option value="AC" title="ACCEPTED" ng-selected="true">Accepted</option>
+                                                <option value="NA" title="NOT ACCEPTED">Not Accepted</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input id="txtCostCode" type="text" class="form-control" ng-if="d.wrkGrp === 'CONT'" style="text-transform: uppercase;"
+                                                   ng-change="VerifyCostCode('{{d.costCode}}','SUP')" ng-model="N.NewCostCode" />
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <button class="btn btn-success" id="btnedit"
+                                                    ng-click="UpdateAcceptance(N,'{{d.wrkGrp}}','{{d.empUnqId}}','{{d.timeIn}}','{{d.costCode}}','SUP')">
+                                                <i class="icon-ok-sign"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

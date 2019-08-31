@@ -1,0 +1,130 @@
+﻿@{
+    ViewBag.Title = "Create / Update Supervisor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Content/DirPAgination/dirPagination.js"></script>
+<script src="~/Scripts/JSController/UserCntrl.js"></script>
+
+<style type="text/css">
+    .ng-table-pager {
+        display: none;
+    }
+
+    .TextBoxStyle {
+        height: 25px;
+    }
+
+    .AddNew {
+        float: right;
+        position: relative;
+    }
+
+    .right-inner-addon {
+        position: relative;
+    }
+
+        .right-inner-addon input {
+            padding-right: 30px;
+        }
+
+        .right-inner-addon i {
+            position: absolute;
+            right: 0px;
+            padding: 10px 12px;
+            pointer-events: none;
+        }
+</style>
+
+<div ng-app="myApp" ng-controller="UserController">
+    <div class="container">
+        <div id="MessageBox" class="table-responsive"></div>
+        <div class="row">
+            @* Add / Update Supervisor Details *@
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><strong>Create/Update Supervisor</strong></div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table id="myTable" class="table table-responsive table-condensed table-bordered">
+                                <tr>
+                                    <td colspan="2" style="text-align:center;">
+                                        <label>Select Employee</label>
+                                    </td>
+                                    <td colspan="2" style="text-align:center;">
+                                        <label>Select Cost Code</label>
+                                    </td>
+                                    <td style="text-align:center;"><label>STEP - 1 : Add To List</label></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center;">
+                                        <input class="form-control" type="text" id="txtEmpCode" name="EmpCode" ng-model="New.EmpUnqId" ng-change="GetEmp()"
+                                               ng-paste="$event.preventDefault()" required>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <input class="form-control" type="text" id="txtEmpName" name="EmpName" readonly />
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <input class="form-control" type="text" id="txtCostCode" name="CostCode" ng-model="New.CostCode" ng-change="GetCostCode()"
+                                               ng-paste="$event.preventDefault()" style="text-transform: uppercase;" required>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <input class="form-control" type="text" id="txtCostCodeDesc" name="CodtCodeDesc" readonly />
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <button id="BtnSave" type="button" class="btn btn-primary btn-custom " value="Save" name="Save" ng-click="AddCostCode(New)">
+                                            <i class="icon-plus-sign"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>Assigining Cost Code Details</strong>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table id="aliasTable" data-show-filter="true" class="data-table table table-hover table-bordered table-condensed table-striped">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align:center;">Employee Code</th>
+                                        <th style="text-align:center;">Cost Code</th>
+                                        <th style="text-align:center;">Cost Code Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody ng-repeat="u in usrdata">
+                                    <tr ng-repeat="usr in u.costCodes">
+                                        <td style="text-align:center;">{{usr.empUnqId}}</td>
+                                        <td style="text-align:center;">{{usr.costCode}}</td>
+                                        <td style="text-align:center;">{{usr.costDesc}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <table class="table">
+                            <tr>
+                                <th style="text-align:left;">
+                                    STEP - 2 : Create Supervisor & Assign Cost Code
+                                </th>
+                                <td style="text-align:right;">
+                                    <input id="BtnCancel" type="reset" class="btn btn-default" value="Reset" ng-click="ResetView()" />
+                                    <button id="btnSubmit" type="button" class="btn btn-success" value="Submit" name="submit" ng-click="CreateSupervisor()">
+                                        Create New Supervisor
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="footer-terms" style="text-align:Left;margin:5px;padding:5px;">
+                        <strong><text style="color:#f44336;">Note: Supervisor to be Create only when "Create New Supervisor" button is pressed.</text></strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

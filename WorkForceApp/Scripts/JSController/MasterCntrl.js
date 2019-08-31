@@ -1,0 +1,6 @@
+﻿var app = angular.module('myApp', ['angularUtils.directives.dirPagination']);
+app.controller('MasterController', function ($scope, $http, $filter) {
+    $http.defaults.headers.common.Authorization = 'Basic ' + $('#myEmpUnqId').val(); $scope.currentPage = 1; $scope.itemsPerPage = 10; $scope.alluserlist = []; $scope._Conpath = ''; var url_string = window.location.href; var url = new URL(url_string); var urlhost = url.hostname; var urlprotocol = url.protocol; $(document).ready(function () { if (typeof (_ConPath) === "undefined") { return; } else { if (urlhost === _URLHostName) { $scope._Conpath = _ConPath; } else { $scope._Conpath = urlprotocol + "//" + urlhost + "/api/"; } }; });
+    $scope.ResetView = function () { window.location.reload(true); };
+    $scope.GetEmp = function () { var emp = new XMLHttpRequest(); emp.open('GET', $scope._Conpath + 'GetEmployees?EmpUnqId=' + $('#myEmpUnqId').val(), true); emp.setRequestHeader('Accept', 'application/json'); emp.onreadystatechange = function () { if (emp.readyState === 4) { var json = JSON.parse(emp.responseText); $scope.empdata = json; $scope.$digest(); } }; emp.send(); };
+});

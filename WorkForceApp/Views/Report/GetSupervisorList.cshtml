@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "Supervisor List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Content/DirPAgination/dirPagination.js"></script>
+<script src="~/Scripts/JSController/UserCntrl.js"></script>
+
+<div ng-app="myApp" ng-controller="UserController">
+    <div class="container">
+        <div id="MessageBox" class="table-responsive"></div>
+        <div class="row">
+            @* Popup Model For View Material Details of Selected GP Advice *@
+            <div class="modal fade" id="CostCodeModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="btnClose">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Material Details </h4>
+                        </div>
+                        <div class="content">
+                            <div class="body_panel">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-condensed table-striped table-hover" id="aliasTable">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align: center;">Employee Code</th>
+                                                <th style="text-align: center;">Cost Code</th>
+                                                <th style="text-align: center;">Cost Code Description</th>
+                                                <th style="text-align: center;">Delete Cost Code</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody ng-repeat="ud in usrdata">
+                                            <tr ng-repeat="cs in ud.costCodes">
+                                                <td style="text-align: center;">{{cs.empUnqId}}</td>
+                                                <td style="text-align: center;">{{cs.costCode}}</td>
+                                                <td style="text-align: center;">{{cs.costDesc}}</td>
+                                                <td style="text-align: center;"><button id="btnDelete" class="btn btn-danger" ng-click="DelteCostCode('{{cs.empUnqId}}','{{cs.costCode}}')"><i class="icon-remove-sign"></i></button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @* Supervisor List *@
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>Supervisor Details</strong>
+                    </div>
+                    <div class="panel-body">
+                        <div ng-init="GetUsers('ALL')" class="table-responsive">
+                            <table data-show-filter="true" class="data-table table table-hover table-bordered table-condensed table-striped">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align:center;">Employee Code</th>
+                                        <th style="text-align:center;">Employee Name</th>
+                                        <th style="text-align:center;">Department</th>
+                                        <th style="text-align:center;">Station</th>
+                                        <th style="text-align:center;">Category</th>
+                                        <th style="text-align:center;">Grade</th>
+                                        <th style="text-align:center;">Designation</th>
+                                        <th style="text-align:center;">SAPID</th>
+                                        <th style="text-align:center;">Details</th>
+                                    </tr>
+                                    <tr>
+                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.empUnqID" /></td>
+                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.empName" /></td>
+                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.deptDesc" /></td>
+                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.statDesc" /></td>
+                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.catDesc" /></td>
+                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.gradeDesc" /></td>
+                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.desgDesc" /></td>
+                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.sapid" /></td>
+                                        <td></td>
+                                    </tr>
+                                </thead>
+                                <tbody dir-paginate="u in allusrdata|orderBy:sortKey:reverse|filter:search|itemsPerPage:10" current-page="currentPage">
+                                    <tr>
+                                        <td style="text-align:center;">{{u.empUnqID}}</td>
+                                        <td style="text-align:left;">{{u.empName}}</td>
+                                        <td style="text-align:left;">{{u.deptDesc}}</td>
+                                        <td style="text-align:left;">{{u.statDesc}}</td>
+                                        <td style="text-align:left;">{{u.catDesc}}</td>
+                                        <td style="text-align:left;">{{u.gradeDesc}}</td>
+                                        <td style="text-align:left;">{{u.desgDesc}}</td>
+                                        <td style="text-align:center;">{{u.sapid}}</td>
+                                        <td style="text-align:center;"><button id="btnInfo" class="btn btn-info" ng-click="PopulateCostCode({{u.empUnqID}})"><i class="icon-info-sign"></i></button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
