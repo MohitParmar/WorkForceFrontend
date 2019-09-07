@@ -199,10 +199,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/23/2014 13:57:34</publishTime>
     </File>
     <File Include="bin/WorkForceApp.dll">
-      <publishTime>08/31/2019 14:41:56</publishTime>
+      <publishTime>09/07/2019 12:32:10</publishTime>
     </File>
     <File Include="bin/WorkForceApp.pdb">
-      <publishTime>08/31/2019 14:41:56</publishTime>
+      <publishTime>09/07/2019 12:32:10</publishTime>
     </File>
     <File Include="Content/bootstrap-3.3.7-dist/css/bootstrap-3.3.7.min.css">
       <publishTime>08/06/2019 15:23:47</publishTime>
@@ -670,7 +670,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/06/2019 14:30:32</publishTime>
     </File>
     <File Include="Images/ajax-loader.gif">
-      <publishTime>08/06/2019 15:10:02</publishTime>
+      <publishTime>09/07/2019 10:47:46</publishTime>
     </File>
     <File Include="Images/JINDALLOGO.jpg">
       <publishTime>08/06/2019 15:10:02</publishTime>
@@ -774,17 +774,20 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/Jquery/jquery-ui.min.js">
       <publishTime>08/06/2019 15:24:51</publishTime>
     </File>
+    <File Include="Scripts/JSController/DefaultCntrl.js">
+      <publishTime>09/07/2019 10:12:41</publishTime>
+    </File>
     <File Include="Scripts/JSController/LoginCntrl.js">
-      <publishTime>08/29/2019 15:11:51</publishTime>
+      <publishTime>09/07/2019 10:13:58</publishTime>
     </File>
     <File Include="Scripts/JSController/ManageCostCodeCntrl.js">
-      <publishTime>08/30/2019 17:35:31</publishTime>
+      <publishTime>09/07/2019 10:56:10</publishTime>
     </File>
     <File Include="Scripts/JSController/MasterCntrl.js">
-      <publishTime>08/31/2019 12:20:31</publishTime>
+      <publishTime>09/07/2019 10:20:14</publishTime>
     </File>
     <File Include="Scripts/JSController/UserCntrl.js">
-      <publishTime>08/29/2019 14:50:14</publishTime>
+      <publishTime>09/07/2019 11:03:14</publishTime>
     </File>
     <File Include="Scripts/modernizr-2.8.3.js">
       <publishTime>08/06/2019 14:31:09</publishTime>
@@ -801,35 +804,41 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/Module/ngTable.js">
       <publishTime>08/06/2019 15:25:05</publishTime>
     </File>
+    <File Include="Views/Home/ChangePassword.cshtml">
+      <publishTime>09/07/2019 11:02:21</publishTime>
+    </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>08/28/2019 16:53:58</publishTime>
+      <publishTime>09/07/2019 11:02:36</publishTime>
     </File>
     <File Include="Views/Home/MemberProfile.cshtml">
-      <publishTime>08/31/2019 11:56:26</publishTime>
+      <publishTime>09/07/2019 11:01:59</publishTime>
+    </File>
+    <File Include="Views/Home/ResetPassword.cshtml">
+      <publishTime>09/07/2019 11:02:03</publishTime>
     </File>
     <File Include="Views/Login/Index.cshtml">
       <publishTime>08/27/2019 14:25:12</publishTime>
     </File>
     <File Include="Views/ManageUser/AssignCostCodeSupervisor.cshtml">
-      <publishTime>08/30/2019 10:27:34</publishTime>
+      <publishTime>09/07/2019 10:55:33</publishTime>
     </File>
     <File Include="Views/ManageUser/CreateSupervisor.cshtml">
-      <publishTime>08/29/2019 15:11:57</publishTime>
+      <publishTime>09/07/2019 11:02:50</publishTime>
     </File>
     <File Include="Views/ManageUser/ManageCostCodeHR.cshtml">
-      <publishTime>08/30/2019 15:21:00</publishTime>
+      <publishTime>09/07/2019 10:56:51</publishTime>
     </File>
     <File Include="Views/ManageUser/ResetAcceptance.cshtml">
-      <publishTime>08/30/2019 18:02:25</publishTime>
+      <publishTime>09/07/2019 11:03:08</publishTime>
     </File>
     <File Include="Views/Report/GetSupervisorList.cshtml">
-      <publishTime>08/28/2019 17:45:38</publishTime>
+      <publishTime>09/07/2019 12:30:52</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>08/06/2019 14:30:32</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>08/31/2019 14:39:54</publishTime>
+      <publishTime>09/07/2019 11:09:28</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>08/06/2019 14:30:32</publishTime>
@@ -838,7 +847,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/06/2019 14:30:32</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/31/2019 14:41:57</publishTime>
+      <publishTime>09/06/2019 17:37:41</publishTime>
     </File>
   </ItemGroup>
 </Project>

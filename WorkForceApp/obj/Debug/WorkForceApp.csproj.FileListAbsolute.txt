@@ -156,4 +156,3 @@ D:\Work\Source Code\WorkForce\WorkForceApp\obj\Debug\WorkForceApp.csproj.CoreCom
 D:\Work\Source Code\WorkForce\WorkForceApp\obj\Debug\WorkForceApp.csproj.CopyComplete
 D:\Work\Source Code\WorkForce\WorkForceApp\obj\Debug\WorkForceApp.dll
 D:\Work\Source Code\WorkForce\WorkForceApp\obj\Debug\WorkForceApp.pdb
-D:\Work\Source Code\WorkForce\WorkForceApp\obj\Debug\WorkForceApp.csprojAssemblyReference.cache

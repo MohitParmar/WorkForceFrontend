@@ -38,12 +38,17 @@
 
 <div ng-app="myApp" ng-controller="UserController">
     <div class="container">
+        <div style="text-align:center;">
+            <img id="loading" src="~/Images/ajax-loader.gif" alt="Loading..." class="deactivediv">
+        </div>
         <div id="MessageBox" class="table-responsive"></div>
         <div class="row">
             @* Add / Update Supervisor Details *@
             <div class="col-sm-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><strong>Create/Update Supervisor</strong></div>
+                    <div class="panel-heading">
+                        <strong>Create/Update Supervisor</strong>
+                    </div>
                     <div class="panel-body">
                         <div class="table-responsive">
                             <table id="myTable" class="table table-responsive table-condensed table-bordered">
@@ -54,7 +59,9 @@
                                     <td colspan="2" style="text-align:center;">
                                         <label>Select Cost Code</label>
                                     </td>
-                                    <td style="text-align:center;"><label>STEP - 1 : Add To List</label></td>
+                                    <td style="text-align:center;">
+                                        <label>STEP - 1 : Add To List</label>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td style="text-align:center;">

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace WorkForceApp.Controllers
 {
@@ -21,6 +17,30 @@ namespace WorkForceApp.Controllers
         }
 
         public ActionResult MemberProfile()
+        {
+            if (Session["EmpUnqId"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+        }
+
+        public ActionResult ResetPassword()
+        {
+            if (Session["EmpUnqId"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+        }
+
+        public ActionResult ChangePassword()
         {
             if (Session["EmpUnqId"] != null)
             {

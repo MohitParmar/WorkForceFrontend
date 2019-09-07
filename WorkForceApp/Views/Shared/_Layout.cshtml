@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link href="~/Content/bootstrap-3.3.7-dist/css/bootstrap-3.3.7.min.css" rel="stylesheet" />
     <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
-    <script src="https://kit.fontawesome.com/b9f6edfaa2.js"></script>
+    @*<script src="https://kit.fontawesome.com/b9f6edfaa2.js"></script>*@
     <link href="~/Content/css/style.css" rel="stylesheet">
     <script src="~/Content/Jquery 3.2.1/jquery-3.2.1.min.js"></script>
     <script src="~/Scripts/Angular/angular.min.js"></script>
@@ -20,6 +20,7 @@
     <script src="~/Scripts/Module/ng-table.src.js"></script>
     <script src="~/Scripts/Module/ng-tags-input.js"></script>
     <link href="~/Content/ng-table.min.css" rel="stylesheet" media="screen" />
+    <script src="~/Scripts/JSController/DefaultCntrl.js"></script>
 
     @* Stylesheet *@
     <style>
@@ -80,18 +81,24 @@
             }
     </style>
     @* Submenu Script *@
-    <script>
+    <script type="text/javascript">
         $(document).ready(function () { $('.dropdown-submenu a.test').on("click", function (e) { $(this).next('ul').toggle(); e.stopPropagation(); e.preventDefault(); }); });
     </script>
-    @* Function For Sync All Master Data Of Employees *@
-    <script>
+    @* Function For Sync All Master Data Of Employees & CostCodes *@
+    <script type="text/javascript">
         function AutoSync() {
+            $('#loading').removeClass("deactivediv"); $('#loading').addClass("activediv");
             var xhr = new XMLHttpRequest(); xhr.open('GET', _ConPath + 'SyncAllEmployees?curUser=' + $('#myEmpUnqId').val(), true);
             xhr.setRequestHeader('Accept', 'application/json'); xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    alert('Record Syncronization Completed');
-                };
+                if (xhr.readyState === 4 && xhr.status === 200) { $('#loading').removeClass("activediv"); $('#loading').addClass("deactivediv"); alert('Record Syncronization Completed'); };
             }; xhr.send();
+        };
+        function SyncCCD() {
+            $('#loading').removeClass("deactivediv"); $('#loading').addClass("activediv");
+            var xhr1 = new XMLHttpRequest(); xhr1.open('GET', _ConPath + 'SyncCostCenters?curUser=' + $('#myEmpUnqId').val(), true);
+            xhr1.setRequestHeader('Accept', 'application/json'); xhr1.onreadystatechange = function () {
+                if (xhr1.readyState === 4 && xhr1.status === 200) { $('#loading').removeClass("activediv"); $('#loading').addClass("deactivediv"); alert('Syncronization Completed'); };
+            }; xhr1.send();
         };
     </script>
     @* Set Header & Footer Text*@
@@ -100,8 +107,13 @@
     </script>
 </head>
 <body>
+    <input type="hidden" value="@Session["UserId"]" id="myUserId" />
     <input type="hidden" value="@Session["EmpUnqId"]" id="myEmpUnqId" />
     <input type="hidden" value="@Session["EmpName"]" id="myEmpName" />
+    <input type="hidden" value="@Session["IsAdmin"]" id="IsAdmin" />
+    <input type="hidden" value="@Session["IsHrUser"]" id="IsHrUser" />
+    <input type="hidden" value="@Session["IsSupervisor"]" id="IsSupervisor" />
+    <input type="hidden" value="@Session["IsHrSup"]" id="IsHrSup" />
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner" id="navmain">
             <div class="container">
@@ -123,7 +135,12 @@
                                 </strong>
                             </a>
                             <ul class="dropdown-menu">
-                                <li id="mnuProfile"><a href="/Home/MemberProfile">Profile</a></li>
+                                <li id="mnuProfile">
+                                    <a href="/Home/MemberProfile">Profile</a>
+                                </li>
+                                <li id="mnuChangePassword">
+                                    <a href="/Home/ChangePassword">Change Password</a>
+                                </li>
                                 <li>@Html.ActionLink("Log Out", "UserLogin", "Login")</li>
                             </ul>
                         </li>
@@ -136,26 +153,29 @@
         <div class="subnavbar-inner">
             <div class="container">
                 <ul class="mainnav">
-                    <li class="active" id="mnuDashboard"><a href="/Home/Index"><i class="icon-dashboard"></i><span>Dashboard</span></a></li>
+                    <li class="active" id="mnuDashboard">
+                        <a href="/Home/Index"><i class="icon-dashboard"></i><span>Dashboard</span></a>
+                    </li>
                     <li class="dropdown" id="mnuMaster">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-list-alt"></i><span>Master</span></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Create New Supervisor", "CreateSupervisor", "ManageUser")</li>
-                            <li>@Html.ActionLink("Employee Acceptance ~ Supervisor", "AssignCostCodeSupervisor", "ManageUser")</li>
-                            <li>@Html.ActionLink("Employee CostCode Change ~ HR", "ManageCostCodeHR", "ManageUser")</li>
-                        </ul>
-                    </li>
-                    <li class="dropdown" id="mnuReport">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-list"></i><span>Report</span></a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Supervisor List", "GetSupervisorList", "Report")</li>
+                            <li id="mnuCreateSupervisor">@Html.ActionLink("Create New Supervisor", "CreateSupervisor", "ManageUser")</li>
+                            <li id="mnuSupervisorAcceptance">@Html.ActionLink("Employee Acceptance ~ Supervisor", "AssignCostCodeSupervisor", "ManageUser")</li>
+                            <li id="mnuHRAcceptance">@Html.ActionLink("Employee CostCode Change ~ HR", "ManageCostCodeHR", "ManageUser")</li>
+                            <li id="mnuSupervisorList">@Html.ActionLink("Supervisor List", "GetSupervisorList", "Report")</li>
                         </ul>
                     </li>
                     <li class="dropdown" id="mnuUitility">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-magnet"></i><span>Uitility</span></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Reset Acceptance", "ResetAcceptance", "ManageUser")</li>
-                            <li><a href="#" onclick="AutoSync()">Syncronize Employees</a></li>
+                            <li id="mnuResetAcceptance">@Html.ActionLink("Reset Acceptance", "ResetAcceptance", "ManageUser")</li>
+                            <li id="mnuEmpSync">
+                                <a href="#" onclick="AutoSync()">Syncronize Employees</a>
+                            </li>
+                            <li id="mnuCCDSync">
+                                <a href="#" onclick="SyncCCD()">Syncronize Cost Codes</a>
+                            </li>
+                            <li id="mnuResetPassword">@Html.ActionLink("Reset Password", "ResetPassword", "Home")</li>
                         </ul>
                     </li>
                 </ul>
@@ -174,7 +194,9 @@
     <div class="navbar-fixed-bottom" style="height:30px;">
         <div class="navbar-inner">
             <div class="container">
-                <div class="brand" style="text-align:center;color:white"><span><label id="footext"></label></span></div>
+                <div class="brand" style="text-align:center;color:white">
+                    <span><label id="footext"></label></span>
+                </div>
             </div>
         </div>
     </div>

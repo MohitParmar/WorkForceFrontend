@@ -8,12 +8,17 @@
 
 <div ng-app="myApp" ng-controller="ManageCostCodeController">
     <div class="container">
+        <div style="text-align:center;">
+            <img id="loading" src="~/Images/ajax-loader.gif" alt="Loading..." class="deactivediv">
+        </div>
         <div class="row">
             <div class="col-sm-12">
                 <div id="MessageBox" class="table-responsive"></div>
                 @* Reset Password *@
                 <div class="panel panel-default">
-                    <div class="panel-heading"><strong>Reset Acceptance</strong></div>
+                    <div class="panel-heading">
+                        <strong>Reset Acceptance</strong>
+                    </div>
                     <div class="panel-body">
                         <div class="table-responsive">
                             <form role="form" name="LeaveForm" novalidate>

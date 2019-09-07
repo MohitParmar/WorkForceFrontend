@@ -20,6 +20,12 @@ namespace WorkForceApp.Models
     {
         public DbSet<Employees> Employees { get; set; }
 
+        public DbSet<User> Users { get; set; }
+
+        public DbSet<UserCostCode> UserCostCodes { get; set; }
+
+        public DbSet<UserRole> UserRoles { get; set; }
+
         public ApplicationDbContext() : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
@@ -38,6 +44,5 @@ namespace WorkForceApp.Models
 
     public class IdentityModels
     {
-
     }
 }

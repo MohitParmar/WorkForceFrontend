@@ -42,7 +42,12 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><strong>Employee Acceptance</strong></div>
+                    <div class="panel-heading">
+                        <strong>Employee Acceptance</strong>
+                    </div>
+                    <div style="text-align:center;">
+                        <img id="loading" src="~/Images/ajax-loader.gif" alt="Loading..." class="deactivediv">
+                    </div>
                     <div class="panel-body">
                         <div ng-init="GetSupvisorPendingTran()" class="table-responsive">
                             <table class="table table-responsive table-condensed table-bordered table-striped">
@@ -62,14 +67,26 @@
                                         <th style="text-align:center;">Action</th>
                                     </tr>
                                     <tr>
-                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.wrkGrp" /></td>
+                                        <td>
+                                            <input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.wrkGrp" />
+                                        </td>
                                         <td></td>
-                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.empUnqId" /></td>
-                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.empName" /></td>
-                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.statDesc" /></td>
-                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.costCode" /></td>
+                                        <td>
+                                            <input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.empUnqId" />
+                                        </td>
+                                        <td>
+                                            <input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.empName" />
+                                        </td>
+                                        <td>
+                                            <input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.statDesc" />
+                                        </td>
+                                        <td>
+                                            <input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.costCode" />
+                                        </td>
                                         <td colspan="2"></td>
-                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.contCode" /></td>
+                                        <td>
+                                            <input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.contCode" />
+                                        </td>
                                         <td colspan="3"></td>
                                     </tr>
                                 </thead>

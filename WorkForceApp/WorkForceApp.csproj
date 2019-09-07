@@ -141,6 +141,9 @@
     </Compile>
     <Compile Include="Models\Employees.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserCostCode.cs" />
+    <Compile Include="Models\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -177,6 +180,8 @@
     <Content Include="Content\css\style.css" />
     <Content Include="Content\csvexport.js" />
     <Content Include="Content\DirPAgination\dirPagination.js" />
+    <Content Include="Images\ajax-loader.gif" />
+    <Content Include="Scripts\JSController\DefaultCntrl.js" />
     <Content Include="Scripts\JSController\ManageCostCodeCntrl.js" />
     <Content Include="Scripts\JSController\MasterCntrl.js" />
     <Content Include="Scripts\JSController\UserCntrl.js" />
@@ -280,7 +285,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Images\ajax-loader.gif" />
     <Content Include="Images\JINDALLOGO.jpg" />
     <Content Include="Scripts\Angular\angular-bootstrap.js" />
     <Content Include="Scripts\Angular\angular-bootstrap.min.js" />
@@ -359,6 +363,8 @@
     <Content Include="Views\Report\GetSupervisorList.cshtml" />
     <Content Include="Views\ManageUser\ResetAcceptance.cshtml" />
     <Content Include="Views\Home\MemberProfile.cshtml" />
+    <Content Include="Views\Home\ResetPassword.cshtml" />
+    <Content Include="Views\Home\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

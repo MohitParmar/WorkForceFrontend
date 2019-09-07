@@ -3,19 +3,64 @@
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div ng-app="myApp" ng-controller="ManageCostCodeController">
+
+<script src="~/Content/DirPAgination/dirPagination.js"></script>
+<script src="~/Scripts/JSController/MasterCntrl.js"></script>
+
+@* Check User ID & Password is Same *@
+<script type="text/javascript">
+    $(window).on('load', function () {
+        var sEmpUnqId = "@Session["UserId"].ToString()";
+        var sPass = "@Session["Pass"].ToString()";
+        if (sEmpUnqId === sPass) { $('#myModal').modal('show'); };
+    });
+</script>
+
+<div ng-app="myApp" ng-controller="MasterController">
     <div class="container">
+        <div style="text-align:center;">
+            <img id="loading" src="~/Images/ajax-loader.gif" alt="Loading..." class="deactivediv">
+        </div>
         <div id="MessageBox" class="table-responsive"></div>
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-info">
-                    <div class="panel-heading"><strong>Employee Acceptance</strong></div>
+                    <div class="panel-heading">
+                        <strong>Dashboard</strong>
+                    </div>
                     <div class="panel-body">
                         <div class="table-responsive">
                             <h1>Work Force Portal</h1>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal modal-content" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="position:fixed">
+        <div class="modal-body">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Change Password</h4>
+            </div>
+            <div class="col-sm-6">
+                <table class="table table-responsive">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="input-group form">
+                                    <input class="form-control" type="Password" id="ePass" name="newPassword" ng-model="New.Pass" placeholder="Enter New Password" required>
+                                    <span class="input-group-btn">
+                                        <button id="btnSave" type="button" class="btn btn-primary" style="text-align:right;" value="Change Password" name="Save"
+                                                ng-click="changePassword(New)">
+                                            Change Password
+                                        </button>
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

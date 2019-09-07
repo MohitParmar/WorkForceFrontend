@@ -35,7 +35,9 @@
                                                 <td style="text-align: center;">{{cs.empUnqId}}</td>
                                                 <td style="text-align: center;">{{cs.costCode}}</td>
                                                 <td style="text-align: center;">{{cs.costDesc}}</td>
-                                                <td style="text-align: center;"><button id="btnDelete" class="btn btn-danger" ng-click="DelteCostCode('{{cs.empUnqId}}','{{cs.costCode}}')"><i class="icon-remove-sign"></i></button></td>
+                                                <td style="text-align: center;">
+                                                    <button id="btnDelete" class="btn btn-danger" ng-click="DelteCostCode('{{cs.empUnqId}}','{{cs.costCode}}')"><i class="icon-remove-sign"></i></button>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -50,6 +52,9 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <strong>Supervisor Details</strong>
+                    </div>
+                    <div style="text-align:center;">
+                        <img id="loading" src="~/Images/ajax-loader.gif" alt="Loading..." class="deactivediv">
                     </div>
                     <div class="panel-body">
                         <div ng-init="GetUsers('ALL')" class="table-responsive">
@@ -67,14 +72,30 @@
                                         <th style="text-align:center;">Details</th>
                                     </tr>
                                     <tr>
-                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.empUnqID" /></td>
-                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.empName" /></td>
-                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.deptDesc" /></td>
-                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.statDesc" /></td>
-                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.catDesc" /></td>
-                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.gradeDesc" /></td>
-                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.desgDesc" /></td>
-                                        <td><input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.sapid" /></td>
+                                        <td>
+                                            <input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.empUnqID" />
+                                        </td>
+                                        <td>
+                                            <input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.empName" />
+                                        </td>
+                                        <td>
+                                            <input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.deptDesc" />
+                                        </td>
+                                        <td>
+                                            <input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.statDesc" />
+                                        </td>
+                                        <td>
+                                            <input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.catDesc" />
+                                        </td>
+                                        <td>
+                                            <input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.gradeDesc" />
+                                        </td>
+                                        <td>
+                                            <input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.desgDesc" />
+                                        </td>
+                                        <td>
+                                            <input class="form-control" style="margin:0;padding:1px;" type="text" ng-model="search.sapid" />
+                                        </td>
                                         <td></td>
                                     </tr>
                                 </thead>
@@ -88,7 +109,9 @@
                                         <td style="text-align:left;">{{u.gradeDesc}}</td>
                                         <td style="text-align:left;">{{u.desgDesc}}</td>
                                         <td style="text-align:center;">{{u.sapid}}</td>
-                                        <td style="text-align:center;"><button id="btnInfo" class="btn btn-info" ng-click="PopulateCostCode({{u.empUnqID}})"><i class="icon-info-sign"></i></button></td>
+                                        <td style="text-align:center;">
+                                            <button id="btnInfo" class="btn btn-info" ng-click="PopulateCostCode({{u.empUnqID}})"><i class="icon-info-sign"></i></button>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
